@@ -21,4 +21,6 @@ class Spp extends Model
     public function Pembayaran():HasMany{
         return $this->hasMany(Pembayaran::class, 'id_spp');
     }
+
+    // TES WANNNNNNNNNNNNNNNNNNN
 }
