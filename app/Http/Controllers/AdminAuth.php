@@ -32,13 +32,13 @@ class AdminAuth extends Controller
     // REGIST
 
     // FUNGSI KE HALAMAN REGISTER
-    public function registerSiswa() {
-        return view('siswa.register'); // ini name viewnya
+    public function registerAdmin() {
+        return view('admin.register'); // ini name viewnya
     }
 
     // FUNGSI KE REGISTER NYA
 
-    public function signupSiswa(Request $request) {
+    public function signupAdmin(Request $request) {
         $request->validate([
             'username' => ['required'],
             'password' => ['required'],
