@@ -48,6 +48,6 @@ class SppController extends Controller
 
     public function destroy(Spp $spp) {
         $spp->delete();
-        return back()->with('Data Spp Berhasil Dihapus');
+        return back()->with('success','Data Spp Berhasil Dihapus');
     }
 }

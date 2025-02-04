@@ -47,7 +47,7 @@ class KelasController extends Controller
 
     public function destroy(Kelas $kelas) {
         $kelas->delete();
-        return back()->with('Kelas Berhasil Dihapus');
+        return back()->with('success','Kelas Berhasil Dihapus');
     }
 
 
