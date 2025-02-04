@@ -40,13 +40,13 @@ class AdminAuth extends Controller
 
     public function signupAdmin(Request $request) {
         $request->validate([
-            'username' => ['required'],
-            'password' => ['required'],
-            'confim_password' => ['required', 'confirmed'],
-            'nama_petugas' => ['required'],
-            'level' => ['required'],
-
+            'username' => 'required',
+            'password' => 'required',
+            'confirm_password' => 'required|confirmed',
+            'nama_petugas' => 'required',
+            'level' => 'required|in:admin,petugas',
         ]);
+
 
         $petugas = new Petugas();
         $petugas->username = $request->username;
@@ -55,6 +55,6 @@ class AdminAuth extends Controller
         $petugas->level = $request->level;
         $petugas->save();
 
-        return back()->with('Berhasil Membuat Data Petugas Baru');
+        return back()->with('success', 'Berhasil Membuat Data Petugas Baru');
     }
 }

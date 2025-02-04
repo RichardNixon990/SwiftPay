@@ -61,7 +61,7 @@ class SiswaAuth extends Controller
         $siswa->id_spp = $request->id_spp;
         $siswa->save();
 
-        return back()->with('Berhasil Membuat Data Siswa Baru');
+        return back()->with('success', 'Berhasil Membuat Data Siswa Baru');
     }
 
 }
