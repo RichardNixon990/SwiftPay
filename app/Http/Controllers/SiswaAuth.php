@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Spp;
+use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +37,12 @@ class SiswaAuth extends Controller
 
     // FUNGSI KE HALAMAN REGISTER
     public function registerSiswa() {
-        return view('siswa.register'); // ini name viewnya
+        $kelas = Kelas::all();
+        $spp = Spp::all();
+        return view('siswa.register',[
+            'kelas' => $kelas,
+            'spp' => $spp
+        ]);
     }
 
     // FUNGSI KE REGISTER NYA
@@ -61,7 +68,7 @@ class SiswaAuth extends Controller
         $siswa->id_spp = $request->id_spp;
         $siswa->save();
 
-        return back()->with('Berhasil Membuat Data Siswa Baru');
+        return back()->with('success', 'Berhasil Membuat Data Siswa Baru');
     }
 
 }
