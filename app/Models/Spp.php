@@ -15,12 +15,13 @@ class Spp extends Model
 
     protected $guarded = [];
 
-    public function Siswa(): BelongsTo
+    public function siswa(): BelongsTo
     {
-        return $this->BelongsTo(Siswa::class, 'id_siswa');
+        return $this->belongsTo(Siswa::class, 'id_siswa');
     }
 
-    public function Pembayaran():HasMany{
+    public function pembayaran(): HasMany
+    {
         return $this->hasMany(Pembayaran::class, 'id_spp');
     }
 }
