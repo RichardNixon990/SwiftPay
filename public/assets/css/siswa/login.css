@@ -22,6 +22,7 @@ body {
 }
 
 .container {
+    width: 100%;
     max-width: 350px;
     background: #F8F9FD;
     background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(251, 250, 244, 0.432) 100%);
@@ -35,6 +36,19 @@ body {
     transform: translateY(20px);
     animation-fill-mode: forwards;
 }
+
+
+@media screen and (max-width: 550px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .form .input {
+        max-width: 50%;
+    }
+}
+
 
 @keyframes fadeIn {
     from {
@@ -52,15 +66,22 @@ body {
     font-weight: 900;
     font-size: 30px;
     color: rgb(235, 131, 23);
+    margin-bottom: 50px;
 }
 
 .form {
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 310px;
+    margin-left: 20px;
 }
 
 .form .input {
-    width: 100%;
-    max-width: 32vh;
+    width: 100%; /* Bisa diatur */
+    max-width: 500px;
     background: white;
     border: none;
     padding: 15px 20px;
@@ -69,6 +90,7 @@ body {
     box-shadow: #fff0cf 0px 10px 10px -5px;
     border-inline: 2px solid transparent;
 }
+
 
 .form .input::-moz-placeholder {
     color: rgb(170, 170, 170);
@@ -97,7 +119,7 @@ body {
 
 .form .register-button, .form .login-button {
     display: block;
-    width: 100%;
+    width: 60%;
     font-weight: bold;
     background: linear-gradient(45deg, rgb(235, 131, 23) 0%, rgb(243, 198, 35)100%);
     color: white;
