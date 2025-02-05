@@ -18,5 +18,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/signin-siswa', [SiswaAuth::class, 'nisn'])->name('siswa.signin');
-
