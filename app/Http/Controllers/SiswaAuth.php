@@ -24,7 +24,7 @@ class SiswaAuth extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('siswa')->attempt($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->intended('dashboard');

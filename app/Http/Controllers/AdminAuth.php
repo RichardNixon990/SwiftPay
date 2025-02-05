@@ -18,7 +18,7 @@ class AdminAuth extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('petugas')->attempt($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->intended('dashboardAdmin');
