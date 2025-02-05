@@ -12,7 +12,8 @@ class Petugas extends Model
 
     protected $guarded = [];
 
-    public function Pembayaran():HasMany{
+    public function pembayaran(): HasMany
+    {
         return $this->hasMany(Pembayaran::class, 'id_petugas');
     }
 }
