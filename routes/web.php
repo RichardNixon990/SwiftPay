@@ -32,5 +32,5 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
 //! INI TEST ROUTE
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('page.Login_Register.Login');
 });
