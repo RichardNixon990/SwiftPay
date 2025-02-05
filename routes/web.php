@@ -32,7 +32,7 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
 //! INI TEST ROUTE
 
 Route::get('/', function () {
-    return view('page.Login_Register.Login');
+    return view('admin.admin_page.Login_Register.register');
 });
 
 Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
