@@ -34,5 +34,3 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
 Route::get('/', function () {
     return view('welcome');
 });
-
-
