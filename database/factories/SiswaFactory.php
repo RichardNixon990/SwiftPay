@@ -24,6 +24,7 @@ class SiswaFactory extends Factory
             'alamat' => fake()->address(),
             'no_telp' => fake()->numerify('08###########'),
             'id_spp' => \App\Models\Spp::inRandomOrder()->first()->id ?? 1,
+            'password' => bcrypt('12345678'),
         ];
     }
 }

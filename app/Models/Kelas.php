@@ -13,8 +13,8 @@ class Kelas extends Model
 
     protected $guarded = [];
 
-    public function Siswa():HasMany{
+    public function siswa(): HasMany
+    {
         return $this->hasMany(Siswa::class, 'id_kelas');
     }
-
 }

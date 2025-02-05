@@ -15,14 +15,16 @@ return new class extends Migration
             $table->id();
             $table->char('nisn', 10);
             $table->char('nis', 8);
+            $table->string('password');
             $table->string('nama');
+            $table->text('pas_foto')->nullable();
             $table->foreignId('id_kelas')->constrained('kelas')->onDelete('cascade');
             $table->text('alamat');
             $table->string('no_telp', 13);
             $table->foreignId('id_spp')->constrained('spps')->onDelete('cascade');
             $table->timestamps();
         });
-        
+
     }
 
     /**

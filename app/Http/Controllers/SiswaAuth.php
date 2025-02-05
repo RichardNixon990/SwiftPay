@@ -7,6 +7,7 @@ use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class SiswaAuth extends Controller
 {
@@ -19,19 +20,19 @@ class SiswaAuth extends Controller
 
     public function signinSiswa(Request $request) {
         $credentials = $request->validate([
-            'nis' => ['required'],
+            'nisn' => ['required'],
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('siswa')->attempt($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->intended('dashboard');
         }
 
         return back()->withErrors([
-            'nis' => 'The provided credentials do not match our records.',
-        ])->onlyInput('nis');
+            'nisn' => 'The provided credentials do not match our records.',
+        ])->onlyInput('nisn');
 
     }
 
@@ -56,6 +57,7 @@ class SiswaAuth extends Controller
             'alamat' => ['required'],
             'no_telp' => ['required'],
             'id_spp' => ['required'],
+            'password' => ['required', 'min:8'],
         ]);
 
         $siswa = new Siswa();
@@ -66,6 +68,7 @@ class SiswaAuth extends Controller
         $siswa->alamat = $request->alamat;
         $siswa->no_telp = $request->no_telp;
         $siswa->id_spp = $request->id_spp;
+        $siswa->password = Hash::make($request->password);
         $siswa->save();
 
         return back()->with('success', 'Berhasil Membuat Data Siswa Baru');
