@@ -34,3 +34,7 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
 Route::get('/', function () {
     return view('page.Login_Register.Login');
 });
+
+Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
+    Route::post('/signin-siswa', [SiswaAuth::class, 'signinSiswa'])->name('signin');
+});
