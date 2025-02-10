@@ -1,4 +1,4 @@
-@extends('components.navbar')
+@extends('layouts.mainDashboard')
 @section('container')
 <body>
 
