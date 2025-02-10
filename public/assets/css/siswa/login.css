@@ -14,7 +14,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/assets/Image/login-bg.png');
+    background-image: url('/assets/Image/login-admin.png');
     background-size: cover;
     background-position: center;
     z-index: -1;
