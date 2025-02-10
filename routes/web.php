@@ -47,7 +47,7 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
 //! INI TEST ROUTE
 
 Route::get('/', function () {
-    return view('admin.admin_page.Login_Register.register');
+    return view('page.Dasboard.fLanding');
 });
 
 Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
