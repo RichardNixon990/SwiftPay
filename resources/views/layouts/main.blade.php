@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     {{-- CSS --}}
-    <link href="{{ url('assets/css/siswa/login.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/css/siswa/fLanding.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/css/siswa/sLanding.css') }}" rel="stylesheet">
 
     {{-- FONT --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +36,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
     @include('components.navbar')
-    @yield('container')
+    @yield('containerDashboard')
 
 
 </body>
