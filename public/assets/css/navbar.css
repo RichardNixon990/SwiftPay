@@ -1,0 +1,40 @@
+.header{
+    font-family: "Raleway", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #F4F6FF;
+}
+
+.background {
+    background-color: #10375c;
+  }
+
+.navbar{
+    color: #F4F6FF;
+}
+
+.LR{
+    font-family: "Raleway", serif;
+}
+
+.nav-link {
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #F3C623;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link:hover::before {
+    width: 100%;
+    left: 0;
+}
