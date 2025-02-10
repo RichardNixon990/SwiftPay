@@ -40,8 +40,6 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
     Route::get('/delete-kelas/{kelas}', [KelasController::class, 'destroy'])->name('class.delete');
     Route::get('/edit-kelas/{kelas}', [KelasController::class, 'edit'])->name('class.edit');
     Route::post('/update-kelas/{kelas}', [KelasController::class, 'update'])->name('class.update');
-
-
 });
 
 //! INI TEST ROUTE
@@ -52,4 +50,12 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
     Route::post('/signin-siswa', [SiswaAuth::class, 'signinSiswa'])->name('signin');
+});
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/signin-admin', [AdminAuth::class, 'signinAdmin'])->name('signin');
+    Route::post('/login-admin', [AdminAuth::class, 'loginAdmin'])->name('login');
+    // Regist
+    Route::get('/register-admin', [AdminAuth::class, 'registerAdmin'])->name('register');
+    Route::post('/signup-admin', [AdminAuth::class, 'signupAdmin'])->name('signup');
 });
