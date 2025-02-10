@@ -45,10 +45,11 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
 //! INI TEST ROUTE
 
 Route::get('/', function () {
-    return view('page.Dasboard.sLanding');
+    return view('page.Dasboard.fLanding');
 });
 
 Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
+    Route::get('/signin-siswa', [SiswaAuth::class, 'loginSiswa'])->name('login');
     Route::post('/signin-siswa', [SiswaAuth::class, 'signinSiswa'])->name('signin');
 });
 

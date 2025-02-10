@@ -11,6 +11,9 @@
 
 .navbar{
     color: #F4F6FF;
+    position: fixed;
+    top: 0; /* Ensures it stays at the top */
+    z-index: 1000; /* Makes sure it stays above other elements */
 }
 
 .LR{

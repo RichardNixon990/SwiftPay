@@ -13,7 +13,7 @@ class SiswaAuth extends Controller
 {
     // FUNGSI KE HALAMAN LOGIN
     public function loginSiswa() {
-        return view('siswa.login'); // ini name viewnya
+        return view('page.Login_Register.Login'); // ini name viewnya
     }
 
     // FUNGSI LOGIN
