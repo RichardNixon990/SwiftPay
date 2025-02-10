@@ -7,9 +7,9 @@
 
     <div class="container">
         <div class="heading">Sign In</div>
-        <form action="{{ route('siswa.signin') }}" method="POST" class="form">
+        <form action="{{ route('admin.login') }}" method="POST" class="form">
             @csrf
-            <input required="" class="input form-control" type="number" name="usn" id="usn" placeholder="Username">
+            <input required="" class="input form-control" type="text" name="username" id="username" placeholder="Username">
             <input required="" class="input form-control" type="password" name="password" id="password"
                 placeholder="Password">
             <span class="forgot-password">
