@@ -109,8 +109,8 @@ blockquote {
     padding: 10px 20px;
     font-size: 1.2rem;
     text-decoration: none;
-    border-radius: 5px;
-    font-family: "Raleway", serif;
+    border-radius: 10px;
+    font-family: "Raleway", serif !important;
 }
 
 .features-title {
@@ -138,6 +138,8 @@ blockquote {
     margin-bottom: 20px;
     width: 50vh;
     height: 15vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .feature-item h3 {
@@ -152,6 +154,10 @@ blockquote {
     font-size: 1rem;
     color: #F4F6FF;
     font-family: "Poppins", serif;
+    width: 39vh;
+    text-align: justify;
+    margin: auto;
+    margin-top: 2vh;
 }
 
 /* HR */
