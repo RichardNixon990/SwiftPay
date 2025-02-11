@@ -8,15 +8,24 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function signIn(Request $request) {
+        $request->validate([
+            'usn' => 'required',
+            'password' => 'required',
+        ]);
         if ($request->role == 'petugas') {
+
             //? Login Logic Buat Petugas
-            $credentials = $request->validate([
-                'username' => ['required'],
-                'password' => ['required'],
-            ]);
+            $credentials = [
+                'username' => $request->usn,
+                'password' => $request->password,
+            ];
 
             if (Auth::guard('petugas')->attempt($credentials)) {
                 $request->session()->regenerate();
+                return [
+                    'message' => 'Login Berhasil jadi petugas',
+                    'nama_petugas' => Auth::guard('petugas')->user()->nama_petugas,
+                ];
                 return redirect()->intended('dashboardAdmin');
             }
 
@@ -25,14 +34,17 @@ class AuthController extends Controller
             ])->onlyInput('username');
         } else {
             //? Login Logic Buat Siswa
-            $credentials = $request->validate([
-                'nisn' => ['required'],
-                'password' => ['required'],
-            ]);
+            $credentials = [
+                'nisn' => $request->usn,
+                'password' => $request->password,
+            ];
 
             if (Auth::guard('siswa')->attempt($credentials)) {
                 $request->session()->regenerate();
-
+                return [
+                    'message' => 'Login Berhasil jadi siswa',
+                    'siswa' => Auth::guard('siswa')->user()->nama,
+                ];
                 return redirect()->intended('dashboard');
             }
 

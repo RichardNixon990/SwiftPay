@@ -2,6 +2,7 @@
 
 use App\Models\Kelas;
 use App\Http\Controllers\AdminAuth;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SiswaAuth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KelasController;
@@ -52,6 +53,9 @@ Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
     Route::get('/signin-siswa', [SiswaAuth::class, 'loginSiswa'])->name('login');
     Route::post('/signin-siswa', [SiswaAuth::class, 'signinSiswa'])->name('signin');
 });
+
+Route::post('/signin', [AuthController::class, 'signIn'])->name('signin');
+
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/signin-admin', [AdminAuth::class, 'signinAdmin'])->name('signin');
