@@ -21,10 +21,6 @@ class AdminAuth extends Controller
 
         if (Auth::guard('petugas')->attempt($credentials)) {
             $request->session()->regenerate();
-            return [
-                'message' => 'Login Berhasil',
-                'username' => Auth::guard('petugas')->user()->username
-            ];
             return redirect()->intended('dashboardAdmin');
         }
 

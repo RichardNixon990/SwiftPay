@@ -29,7 +29,8 @@ class KelasController extends Controller
 
     public function edit(Request $request, Kelas $kelas) {
         return view('Test.buatkelas',[
-            'data' => $kelas
+            'data' => $kelas,
+            'kelas' => Kelas::all()
         ]);
     }
 
