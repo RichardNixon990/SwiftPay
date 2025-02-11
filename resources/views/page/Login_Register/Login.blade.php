@@ -1,4 +1,4 @@
-@include('layouts.main')
+@include('layouts.mainLR')
 @section('container')
 
     <div class="login-bg">
