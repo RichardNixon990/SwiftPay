@@ -49,6 +49,10 @@ Route::get('/', function () {
     return view('page.Dasboard.sLanding');
 });
 
+Route::get('/admin', function () {
+    return view('admin.page.Dashboard.Landing');
+});
+
 Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
     Route::get('/signin-siswa', [SiswaAuth::class, 'loginSiswa'])->name('login');
     Route::post('/signin-siswa', [SiswaAuth::class, 'signinSiswa'])->name('signin');
