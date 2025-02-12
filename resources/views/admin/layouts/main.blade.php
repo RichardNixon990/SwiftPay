@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     {{-- CSS --}}
-    <link href="{{ url('assets/css/siswa/login.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/css/admin/landing.css') }}" rel="stylesheet">
 
     {{-- FONT --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">

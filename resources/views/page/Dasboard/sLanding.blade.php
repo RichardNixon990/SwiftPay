@@ -6,43 +6,65 @@
 
     </div>
     <div class="container mt-4">
+
+        <div class="container-fluid mx-6" style="margin-top: 70px;">
+            <div class="header header-text-dashboard text-center p-5">
+                <h1 class="welcome-dashboard">
+                    Selamat Datang <span>(Siswa)</span> di <span>SwiftPay</span>
+                </h1>
+                <p class="welcomeP-dashboard">
+                    Pantau dan kelola pembayaran SPP Anda dengan mudah dan cepat!
+                </p>
+            </div>
+        </div>
+
         <div class="row g-4">
             <!-- Total SPP yang harus dibayar -->
-            <div class="col-md-6">
-                <div class="card slsiswa-card">
+            <div class="col-6">
+                <div class="card slsiswa-card card-table">
                     <div class="card-body">
-                        <h5 class="slsiswa-card-title">Total SPP yang Harus Dibayar</h5>
-                        <p class="slsiswa-card-amount">Rp 1.500.000</p>
+                        <h5 class="slsiswa-card-title spp-title"> <i> Total SPP yang Harus Dibayar </i></h5>
+                        <p class="slsiswa-card-amount" style="margin-top: 3vh">Rp 1.500.000</p>
                     </div>
                 </div>
             </div>
 
             <!-- Status Pembayaran Terakhir -->
-            <div class="col-md-6">
-                <div class="card slsiswa-card">
+            <div class="col-6">
+                <div class="card slsiswa-card card-table"">
                     <div class="card-body">
-                        <h5 class="slsiswa-card-title">Status Pembayaran Terakhir</h5>
-                        <p class="slsiswa-card-status">Lunas - Januari 2025</p>
+                        <h5 class="slsiswa-card-title"> <i>Status Pembayaran Terakhir</i></h5>
+                        <p class="slsiswa-card-status" style="margin-top: 3vh">Lunas - Januari 2025</p>
                     </div>
                 </div>
             </div>
 
             <!-- Tagihan yang Akan Datang -->
-            <div class="col-12">
-                <div class="card slsiswa-card">
+            <div class="col-6">
+                <div class="card slsiswa-card card-table">
                     <div class="card-body">
-                        <h5 class="slsiswa-card-title">Tagihan yang Akan Datang</h5>
-                        <p class="slsiswa-card-tagihan">Februari 2025 - Rp 1.500.000 (Belum Dibayar)</p>
+                        <h5 class="slsiswa-card-title"><i>Tagihan yang Akan Datang</i></h5>
+                        <p class="slsiswa-card-tagihan" style="margin-top: 3vh">Februari 2025 - Rp 1.500.000 (Belum Dibayar)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tagihan yang Akan Datang -->
+            <div class="col-6">
+                <div class="card slsiswa-card card-table">
+                    <div class="card-body">
+                        <h5 class="slsiswa-card-title"><i>Tagihan Sisa </i></h5>
+                        <p class="slsiswa-card-tagihan" style="margin-top: 3vh">Februari 2025 - Rp 500.000 ( Sisa )</p>
                     </div>
                 </div>
             </div>
 
             <!-- Histori Pembayaran -->
             <div class="col-12">
-                <div class="card slsiswa-card">
-                    <div class="card-body">
-                        <h5 class="slsiswa-card-title">Histori Pembayaran</h5>
-                        <table class="table table-striped slsiswa-table">
+                <div class="card slsiswa-card rounded-border">
+                    <div class="card-body body-table">
+                        <h5 class="slsiswa-card-title "><i>Histori Pembayaran</i></h5>
+                        <table class="table table-striped slsiswa-table" style="margin-top: 3vh">
                             <thead>
                                 <tr>
                                     <th>Bulan</th>
