@@ -1,3 +1,6 @@
+.container{
+    margin-bottom: 100px;
+}
 .slanding-bg {
     position: fixed;
     top: 0vh;
@@ -14,28 +17,29 @@
     background-attachment: fixed;
 }
 
-
-/* Warna utama */
 :root {
-    --navy: #1b2a4e;
+    --navy: #10375C;
     --orange: #ff7b00;
     --light-bg: #f5f7fa;
     --text-color: #ffffff;
+    --bs-border-color: #ff7b00;
 }
 
-/* Styling Background */
 .slanding-bg {
     background-color: var(--light-bg);
     min-height: 100vh;
     padding: 20px 0;
 }
 
-/* Card Styling */
 .slsiswa-card {
+    height: 100% !important;
     background-color: var(--navy);
     color: var(--text-color);
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 1.5rem !important;
+    border-color: var(--bs-border-color);
+    box-shadow: 0px 4px 8px rgba(2, 0, 134, 0.2);
+    border: 0.2rem solid #ff7b00 !important;
+    padding: 1vh;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -43,34 +47,34 @@
     transform: translateY(-5px);
 }
 
-/* Judul di Card */
 .slsiswa-card-title {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 3vh;
+    font-weight: 700;
     margin-bottom: 10px;
-    color: var(--orange);
+    color: var(--navy);
+    font-family: "Raleway", serif;
 }
 
-/* Format Angka Uang */
 .slsiswa-card-amount {
     font-size: 22px;
     font-weight: bold;
+    color: var(--orange);
+    font-family: "Poppins", serif;
 }
 
-/* Status Pembayaran */
 .slsiswa-card-status {
     font-size: 16px;
     font-weight: 500;
     color: var(--orange);
+    font-family: "Poppins", serif;
 }
 
-/* Tagihan */
 .slsiswa-card-tagihan {
     font-size: 16px;
     font-weight: 500;
+    font-family: "Poppins", serif;
 }
 
-/* Table Styling */
 .slsiswa-table thead {
     background-color: var(--navy);
     color: var(--text-color);
@@ -84,7 +88,6 @@
     background-color: #f2f2f2;
 }
 
-/* Badge untuk status */
 .badge.bg-success {
     background-color: var(--orange) !important;
     color: white !important;
@@ -94,3 +97,19 @@
     background-color: red !important;
 }
 
+/* CUKUP */
+.header-text-dashboard {
+    color: #10375C !important;
+}
+
+.welcome-dashboard {
+    font-size: clamp(2rem, 5vw + 1rem, 3.5rem);
+    font-family: "Raleway", serif;
+    font-weight: 700;
+}
+
+.welcomeP-dashboard {
+    font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+    font-family: "Poppins", serif;
+    font-weight: 300;
+}
