@@ -86,4 +86,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'AuthCheck'
     Route::get('/ManagePetugas', [AdminController::class, 'ManagePetugas'])->name('ManagePetugas');
     Route::get('/ManageSPP', [AdminController::class, 'ManageSPP'])->name('ManageSPP');
     Route::get('/BayarSPP', [AdminController::class, 'BayarSPP'])->name('BayarSPP');
+    // FITUR ATMINT TAMBAH KELAS
+    Route::post('/tambahKelas', [AdminController::class, 'tambahKelas'])->name('tambahKelas');
+    Route::get('/hapusKelas/{kelas}', [AdminController::class, 'hapusKelas'])->name('hapusKelas');
+
 });

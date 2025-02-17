@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-       // Kelas::factory()->count(10)->create();
+       Kelas::factory()->count(10)->create();
         Petugas::factory()->count(10)->create();
-        //Spp::factory()->count(5)->create();
-       // Siswa::factory()->count(10)->create();
+        Spp::factory()->count(5)->create();
+        Siswa::factory()->count(10)->create();
         //Pembayaran::factory()->count(10)->create(); //! Err teuing kunaon cape ah
     }
 }
