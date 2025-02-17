@@ -18,7 +18,7 @@ class KelasFactory extends Factory
     {
         return [
             'nama_kelas' => fake()->randomElement(['X IPA 1', 'X IPA 2', 'XI IPS 1', 'XII RPL']),
-            'keahlian' => fake()->randomElement(['IPA', 'IPS', 'RPL', 'TKJ']),
+            'wali_kelas' => fake()->name()
         ];
     }
 }
