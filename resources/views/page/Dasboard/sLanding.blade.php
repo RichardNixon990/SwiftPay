@@ -10,7 +10,7 @@
         <div class="container-fluid mx-6" style="margin-top: 70px;">
             <div class="header header-text-dashboard text-center p-5">
                 <h1 class="welcome-dashboard">
-                    Selamat Datang <span>(Siswa)</span> di <span>SwiftPay</span>
+                    Selamat Datang <span>{{ Auth::guard('siswa')->user()->nama }}</span> di <span>SwiftPay</span>
                 </h1>
                 <p class="welcomeP-dashboard">
                     Pantau dan kelola pembayaran SPP Anda dengan mudah dan cepat!

@@ -9,15 +9,15 @@
 
                 <!-- Admin Menu -->
                 <div class="d-flex gap-3 ms-4 admin-menu">
-                    <a href="#" class="admin-link">Manage Siswa</a>
+                    <a href="{{ route('admin.ManageSiswa') }}" class="admin-link">Manage Siswa</a>
                     <div class="garis mx-3">|</div>
-                    <a href="#" class="admin-link">Manage Kelas</a>
+                    <a href="{{ route('admin.ManageKelas') }}" class="admin-link">Manage Kelas</a>
                     <div class="garis mx-3">|</div>
-                    <a href="#" class="admin-link">Manage Petugas</a>
+                    <a href="{{ route('admin.ManagePetugas') }}" class="admin-link">Manage Petugas</a>
                     <div class="garis mx-3">|</div>
-                    <a href="#" class="admin-link">Manage SPP</a>
+                    <a href="{{ route('admin.ManageSPP') }}" class="admin-link">Manage SPP</a>
                     <div class="garis mx-3">|</div>
-                    <a href="#" class="admin-link">Bayar SPP</a>
+                    <a href="{{ route('admin.BayarSPP') }}" class="admin-link">Bayar SPP</a>
                 </div>
             </div>
 
@@ -25,7 +25,7 @@
             <div class="ms-auto d-flex align-items-center mx-6 mb-0 LR">
                 <a href="" class="nav-link">Dashboard</a>
                 <div class="garis mx-3">|</div>
-                <a href="" class="nav-link">Logout</a>
+                <a href="{{ route('admin.logoutAdmin') }}" class="nav-link">Logout</a>
             </div>
         </div>
     </nav>

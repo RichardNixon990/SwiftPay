@@ -12,7 +12,7 @@
 
             <div class="container-fluid d-flex adminName">
                 <div class="heading-text">
-                    <h1>Halo Admin, (Nama Admin)</h1>
+                    <h1>Halo Admin, {{ Auth::guard('petugas')->user()->nama_petugas }}</h1>
                     <blockquote class="adminLanding">Disini kamu bisa mengatur dan melihat semua aktivitas! Gunakan Akses Privilege Ini Dengan Sebaiknya!</blockquote>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <h5 class="adminlanding-card-title">Total Siswa</h5>
                         <div class="card-title-underline"></div>
-                        <p class="adminlanding-card-amount">500</p>
+                        <p class="adminlanding-card-amount">{{ $totalSiswa }}</p>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     <div class="card-body">
                         <h5 class="adminlanding-card-title">Total Kelas</h5>
                         <div class="card-title-underline"></div>
-                        <p class="adminlanding-card-amount">20</p>
+                        <p class="adminlanding-card-amount">{{ $totalKelas }}</p>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     <div class="card-body">
                         <h5 class="adminlanding-card-title">Total Petugas</h5>
                         <div class="card-title-underline"></div>
-                        <p class="adminlanding-card-amount">5</p>
+                        <p class="adminlanding-card-amount">{{ $totalPetugas }}</p>
                     </div>
                 </div>
             </div>

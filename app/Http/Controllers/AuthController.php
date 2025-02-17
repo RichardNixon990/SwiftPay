@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller
 {
-    public function signIn(Request $request) {
+
+    public function login(){
+        return view('page.Login_Register.Login');
+    }
+    public function signIn(Request $request)
+    {
         $request->validate([
             'usn' => 'required',
             'password' => 'required',
@@ -22,11 +28,7 @@ class AuthController extends Controller
 
             if (Auth::guard('petugas')->attempt($credentials)) {
                 $request->session()->regenerate();
-                return [
-                    'message' => 'Login Berhasil jadi petugas',
-                    'nama_petugas' => Auth::guard('petugas')->user()->nama_petugas,
-                ];
-                return redirect()->intended('dashboardAdmin');
+                return redirect()->intended(route('admin.dashboard'));
             }
 
             return back()->withErrors([
@@ -41,16 +43,34 @@ class AuthController extends Controller
 
             if (Auth::guard('siswa')->attempt($credentials)) {
                 $request->session()->regenerate();
-                return [
-                    'message' => 'Login Berhasil jadi siswa',
-                    'siswa' => Auth::guard('siswa')->user()->nama,
-                ];
-                return redirect()->intended('dashboard');
+                return redirect()->intended(route('siswa.dashboard'));
             }
 
             return back()->withErrors([
                 'nisn' => 'The provided credentials do not match our records.',
             ])->onlyInput('nisn');
         }
+    }
+
+    public function logoutAdmin(Request $request): RedirectResponse
+    {
+        Auth::guard('petugas')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+    public function logoutSiswa(Request $request): RedirectResponse
+    {
+        Auth::guard('siswa')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
