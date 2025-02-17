@@ -67,6 +67,22 @@
                         <input type="text" class="form-control" placeholder="Masukkan Nama">
                     </div>
                     <div class="mb-3">
+                        <label class="form-label name">NISN :</label>
+                        <input type="number" class="form-control" placeholder="Masukkan NISN">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label name">NIS :</label>
+                        <input type="number" class="form-control" placeholder="Masukkan NIS">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label name">Alamat :</label>
+                        <input type="text" class="form-control" placeholder="Masukkan Alamat">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label name">No Telp :</label>
+                        <input type="number" class="form-control" placeholder="Masukkan No Telp">
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label class">Kelas :</label>
                         <select class="form-select">
                             <option>Pilih Kelas</option>
@@ -76,8 +92,13 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label name">Total Pembayaran :</label>
-                        <input type="text" class="form-control" placeholder="Rp 0">
+                        <label class="form-label class">SPP :</label>
+                        <select class="form-select">
+                            <option>Pilih SPP</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-success">Simpan</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
