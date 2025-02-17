@@ -45,12 +45,20 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
 
 //! INI TEST ROUTE
 
-Route::get('/', function () {
+Route::get('/sLanding', function () {
     return view('page.Dasboard.sLanding');
 });
 
-Route::get('/admin', function () {
+Route::get('/', function () {
+    return view('page.Dasboard.fLanding');
+});
+
+Route::get('/sLanding/Admin', function () {
     return view('admin.page.Dashboard.Landing');
+});
+
+Route::get('/sLanding/Admin/manageSiswa', function () {
+    return view('admin.page.Dashboard.manageSiswa');
 });
 
 Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {

@@ -6,14 +6,15 @@
 }
 
 .background {
-    background-color: #10375c;
+    backdrop-filter: blur(30px);
+    background-color: #10375cd8;
   }
 
 .navbar{
     color: #F4F6FF;
     position: fixed;
-    top: 0; /* Ensures it stays at the top */
-    z-index: 1000; /* Makes sure it stays above other elements */
+    top: 0;
+    z-index: 1000;
 }
 
 .LR{
