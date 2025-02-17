@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/admin/navbarAdmin.css') }}">
     <link href="{{ url('assets/css/admin/landing.css') }}" rel="stylesheet">
     <link href="{{ url('assets/css/admin/manageSiswa.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/css/admin/manageClass.css') }}" rel="stylesheet">
 
 
     {{-- FONT --}}
