@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Spp extends Model
 {
@@ -15,9 +17,9 @@ class Spp extends Model
 
     protected $guarded = [];
 
-    public function siswa(): BelongsTo
+    public function siswa()
     {
-        return $this->belongsTo(Siswa::class, 'id_siswa');
+        return $this->hasMany(Siswa::class, 'id_spp');
     }
 
     public function pembayaran(): HasMany

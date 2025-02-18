@@ -10,7 +10,7 @@ class KelasController extends Controller
     // CREATE CLASS
     public function createClass() {
         return view('kelas.create',[
-            'data' => null
+            'data' => null,
         ]);
     }
 

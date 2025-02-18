@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Siswa extends Authenticatable
 {
@@ -19,9 +20,9 @@ class Siswa extends Authenticatable
         return $this->belongsTo(Kelas::class, 'id_kelas');
     }
 
-    public function spp(): HasMany
+    public function spp()
     {
-        return $this->hasMany(Spp::class, 'id_siswa');
+        return $this->belongsTo(Spp::class, 'id_spp');
     }
 
     public function pembayaran(): HasMany

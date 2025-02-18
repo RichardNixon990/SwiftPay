@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('tahun');
             $table->enum('semester',['genap','ganjil']);
+            $table->integer('nominal');
             $table->timestamps();
         });
     }
