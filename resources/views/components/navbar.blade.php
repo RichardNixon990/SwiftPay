@@ -3,9 +3,9 @@
     <nav class="navbar navbar-expand-lg navbar-light background position-sticky">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center mx-5">
-                <img src="{{ asset('Assets/Image/Swift.png') }}" alt="Logo" width="80" height="80"
+                <img src="{{ asset('Assets/Image/Swift.png') }}" alt="Logo" width="50" height="50"
                     class="d-inline-block align-text-top img-fluid">
-                <h1 class="fs-7 ms-4 mb-0 header">SwiftPay</h1>
+                <h1 class="fs-3 ms-4 mb-0 header">SwiftPay</h1>
             </a>
 
             <div class="ms-auto d-flex align-items-center mx-3 fs-5 mb-0 LR">
