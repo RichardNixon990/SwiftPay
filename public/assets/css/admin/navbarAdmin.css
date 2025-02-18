@@ -96,6 +96,16 @@
     left: 0;
 }
 
+.admin-link.active {
+    color: #F3C623; 
+    font-weight: bold;
+}
+
+.admin-link.active::before {
+    width: 100%;
+    left: 0;
+}
+
 /* Responsiveness */
 @media (max-width: 768px) {
     .navbar {

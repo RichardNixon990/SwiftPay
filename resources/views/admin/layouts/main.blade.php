@@ -18,9 +18,8 @@
     <link href="{{ url('assets/css/admin/landing.css') }}" rel="stylesheet">
     <link href="{{ url('assets/css/admin/manageSiswa.css') }}" rel="stylesheet">
     <link href="{{ url('assets/css/admin/manageClass.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/css/admin/manageSPP.css') }}" rel="stylesheet">
 
-
-    {{-- FONT --}}
    {{-- FONT --}}
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
