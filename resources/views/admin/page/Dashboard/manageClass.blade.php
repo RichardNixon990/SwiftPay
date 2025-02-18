@@ -26,10 +26,12 @@
                 @foreach ($kelas as $kel)
                     <tr class="manageClass">
                         <td class="manageClass">{{ $loop->iteration }}</td>
-                        <td class="manageClass">{{ $kel->nama_kelas }}</td>
-                        <td class="manageClass">{{ $kel->wali_kelas }}</td>
+                        <td class="manageClass" id="nama-kelas-{{ $kel->id }}">{{ $kel->nama_kelas }}</td>
+                        <td class="manageClass" id="wali-kelas-{{ $kel->id }}">{{ $kel->wali_kelas }}</td>
                         <td class="manageClass">
-                            <button class="btn-edit manageClass">Edit</button>
+                            <button class="btn-edit manageClass" data-bs-toggle="modal"
+                                data-bs-target="#adminManageKelasEdit-modalForm"
+                                onclick="editKelas('{{ $kel->id }}', '{{ $kel->nama_kelas }}', '{{ $kel->wali_kelas }}')">Edit</button>
                             <a href="{{ route('admin.hapusKelas', $kel->id) }}"
                                 onclick="return confirm('Apakah kamu yakin ingin menghapus kelas ini?');">
                                 <button class="btn-delete manageClass">Hapus</button>
@@ -70,4 +72,43 @@
             </div>
         </div>
     </div>
+
+    {{-- BUAT EDIT --}}
+    <div class="modal fade" id="adminManageKelasEdit-modalForm" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Kelas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.updateKelas') }}" method="POST">
+                        @method('PUT')
+                        @csrf
+                        <input name="id_kelas" id="edit-id" type="hidden">
+                        <div class="mb-3">
+                            <label class="form-label">Nama Kelas:</label>
+                            <input type="text" class="form-control" placeholder="Masukkan Nama Kelas" name="nama_kelas"
+                                id="edit-nama-kelas">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nama Wali Kelas:</label>
+                            <input type="text" class="form-control" placeholder="Masukkan Nama Wali Kelas"
+                                name="wali_kelas" id="edit-wali-kelas">
+                        </div>
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <script>
+            function editKelas(id, namaKelas, waliKelas) {
+                document.getElementById("edit-id").value = id;
+                document.getElementById("edit-nama-kelas").value = namaKelas;
+                document.getElementById("edit-wali-kelas").value = waliKelas;
+            }
+        </script>
 @endsection

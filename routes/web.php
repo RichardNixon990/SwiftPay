@@ -81,13 +81,22 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'AuthCheck'
     // Halaman Atmint
     Route::get('/dashboardAdmin', [AdminController::class, 'dashboard'])->name('dashboard');
     // Navigasi Fitur Atmint
-    Route::get('/ManageSiswa', [AdminController::class, 'ManageSiswa'])->name('ManageSiswa');
-    Route::get('/ManageKelas', [AdminController::class, 'ManageKelas'])->name('ManageKelas');
     Route::get('/ManagePetugas', [AdminController::class, 'ManagePetugas'])->name('ManagePetugas');
-    Route::get('/ManageSPP', [AdminController::class, 'ManageSPP'])->name('ManageSPP');
     Route::get('/BayarSPP', [AdminController::class, 'BayarSPP'])->name('BayarSPP');
-    // FITUR ATMINT TAMBAH KELAS
+    // FITUR ATMINT KELAS
+    Route::get('/ManageKelas', [AdminController::class, 'ManageKelas'])->name('ManageKelas');
     Route::post('/tambahKelas', [AdminController::class, 'tambahKelas'])->name('tambahKelas');
     Route::get('/hapusKelas/{kelas}', [AdminController::class, 'hapusKelas'])->name('hapusKelas');
+    Route::put('/updateKelas', [AdminController::class, 'updateKelas'])->name('updateKelas');
+    // FITUR ATMINT SPP
+    Route::get('/ManageSPP', [AdminController::class, 'ManageSPP'])->name('ManageSPP');
+    Route::post('/tambahSpp', [AdminController::class, 'tambahSpp'])->name('tambahSpp');
+    Route::get('/hapusSpp/{spp}', [AdminController::class, 'hapusSpp'])->name('hapusSpp');
+    Route::put('/updateSpp', [AdminController::class, 'updateSpp'])->name('updateSpp');
+    // FITUR ATMINT SISWA
+    Route::get('/ManageSiswa', [AdminController::class, 'ManageSiswa'])->name('ManageSiswa');
+    Route::post('/tambahSiswa', [AdminController::class, 'tambahSiswa'])->name('tambahSiswa');
+    Route::get('/hapusSiswa/{siswa}', [AdminController::class, 'hapusSiswa'])->name('hapusSiswa');
+    Route::put('/updateSiswa', [AdminController::class, 'updateSiswa'])->name('updateSiswa');
 
 });
