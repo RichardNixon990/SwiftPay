@@ -175,10 +175,55 @@ class AdminController extends Controller
         return back();
     }
     //? AREA MANAGE SPP END
+
+    //? AREA MANAGE PETUGAS
     public function ManagePetugas()
     {
-        return view('admin.page.Dashboard.managePetugas');
+        return view('admin.page.Dashboard.managePetugas', [
+            'petugas' => Petugas::orderBy('created_at', 'desc')->paginate(5)
+        ]);
     }
+
+    public function tambahPetugas(Request $request) {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+            'nama_petugas' => 'required',
+            'level' => 'required|in:admin,petugas',
+        ]);
+
+        $petugas = new Petugas();
+        $petugas->username = $request->username;
+        $petugas->password = Hash::make($request->password);
+        $petugas->nama_petugas = $request->nama_petugas;
+        $petugas->level = $request->level;
+        $petugas->save();
+
+        return back()->with('success', 'Berhasil Membuat Data Petugas Baru');
+    }
+
+    public function hapusPetugas(Petugas $petugas)
+    {
+        $petugas->delete();
+        return back();
+    }
+    public function updatePetugas(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'nullable',
+            'nama_petugas' => 'required',
+            'level' => 'required|in:admin,petugas',
+        ]);
+        $petugas = Petugas::findOrFail($request->editid);
+        $petugas->username = $request->username;
+        $petugas->password = Hash::make($request->password);
+        $petugas->nama_petugas = $request->nama_petugas;
+        $petugas->level = $request->level;
+        $petugas->save();
+        return back();
+    }
+    //? AREA MANAGE PETUGAS END
 
     public function BayarSPP()
     {
