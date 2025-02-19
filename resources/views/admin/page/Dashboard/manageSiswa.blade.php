@@ -211,7 +211,7 @@
             console.log('tes klik')
         }
 
-        function editSiswa(id, nama, nisn, nis, alamat, no_telp, kelas, spp) {
+        function editSiswa(id, username, nama, level) {
             alamat = atob(alamat);
             console.log('fungsi masuk')
             console.log([id, nama, nisn, nis, alamat, no_telp, kelas, spp]);
