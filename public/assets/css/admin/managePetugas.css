@@ -1,10 +1,10 @@
-.manageSiswa-BG {
+.managePetugas-BG {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/assets/Image/manageSiswaBG.png');
+    background-image: url('/assets/Image/managePetugasBGpng.png');
     background-size: cover;
     background-position: center;
     z-index: -5;
@@ -12,20 +12,20 @@
     animation: zoomOut 3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards, fadeInColor 1.5s ease-in forwards;
 }
 
-@keyframes zoomOut{
-    0%{
+@keyframes zoomOut {
+    0% {
         transform: scale(2);
     }
-    100%{
+    100% {
         transform: scale(1);
     }
 }
 
-@keyframes fadeInColor{
-    0%{
+@keyframes fadeInColor {
+    0% {
         opacity: 0;
     }
-    100%{
+    100% {
         opacity: 1;
         background-color: rgba(0, 0, 0, 0.5);
     }
@@ -45,14 +45,14 @@ body {
     padding: 20px;
 }
 
-/* Container utama */
-.container-mngSiswa {
+.container-mngPetugas {
     backdrop-filter: blur(80px);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 1200px;
     margin: 0 auto;
+    opacity: 0;
     animation: slideUp 1.5s ease-out forwards;
 }
 
@@ -67,7 +67,6 @@ body {
     }
 }
 
-
 /* Tombol Tambah Siswa */
 .btn-primary {
     background-color: var(--orange);
@@ -78,38 +77,26 @@ body {
     background-color: #e66a00;
 }
 
-/* Warna tabel */
+/* Tabel */
 .table {
     border-radius: 10px;
     overflow: hidden;
 }
 
-.table thead th{
-    background-color: var(--navy) !important;
-    color: var(--text-color) !important;
-    text-align: center;
-}
-
 .table thead th {
+    background-color: var(--navy);
+    color: var(--text-color);
+    text-align: center;
     padding: 12px;
     font-weight: bold;
     border: 1px solid var(--navy);
 }
 
-/* Warna isi tabel */
-/* .table tbody td {
-    background-color: var(--navy);
-    color: var(--text-color);
-}
-
-.table tbody td:nth-child(even) {
-    background-color: #16223d;
-}
-
 .table tbody td {
     padding: 10px;
     border: 1px solid var(--border-color);
-    color: var(--text-color);
+    color: var(--navy);
+    text-align: center;
 }
 
 .table tbody tr:hover {
@@ -120,7 +107,7 @@ body {
 .table-bordered th,
 .table-bordered td {
     border-color: var(--border-color);
-} */
+}
 
 /* Responsiveness */
 @media (max-width: 768px) {
@@ -134,7 +121,7 @@ body {
     }
 }
 
-/* Tombol Aksi di Tabel */
+/* Tombol Aksi */
 .btn-info {
     background-color: var(--navy);
     border: none;
@@ -172,14 +159,14 @@ body {
 
 .modal-body {
     background-color: #ffffff;
-    border-radius: 6px !important;
+    border-radius: 6px;
 }
 
 .modal-footer {
     background-color: #f2f2f2;
 }
 
-.modal-title{
+.modal-title {
     font-family: "Raleway", sans-serif;
 }
 
@@ -187,11 +174,11 @@ body {
     border-radius: 15px !important;
 }
 
-
 /* Form di Modal */
 .form-control,
 .form-select {
     border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
 }
 
 .name,
@@ -200,6 +187,7 @@ body {
     margin-left: 0.4rem;
     font-weight: bolder;
 }
+
 /* Badge Status */
 .badge.bg-success {
     background-color: var(--orange) !important;
@@ -210,44 +198,20 @@ body {
     background-color: red !important;
 }
 
-/* Card */
-.adminlanding-card {
-    background-color: var(--navy);
-    color: var(--text-color);
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-}
-
-.adminlanding-card:hover {
-    transform: translateY(-5px);
-}
-
-.adminlanding-card-title {
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--orange);
-}
-
-.adminlanding-card-amount {
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* UNTUK CSS SENUA TEXT AWAS AJA LO UBAH DISINI BUAT TABEL */
-.mngSiswa-Header{
+/* Header dan Quote */
+.mngPetugas-Header {
     font-weight: bolder;
     font-size: 5vh;
     font-family: "Raleway", serif;
     text-align: center;
 }
 
-.bq-mngSiswa{
+.bq-mngPetugas {
     font-family: "Poppins", serif;
     text-align: center;
 }
 
+/* Input number styling */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;

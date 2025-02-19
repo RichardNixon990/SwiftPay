@@ -19,6 +19,7 @@
     <link href="{{ url('assets/css/admin/manageSiswa.css') }}" rel="stylesheet">
     <link href="{{ url('assets/css/admin/manageClass.css') }}" rel="stylesheet">
     <link href="{{ url('assets/css/admin/manageSPP.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/css/admin/managePetugas.css') }}" rel="stylesheet">
 
    {{-- FONT --}}
    <link rel="preconnect" href="https://fonts.googleapis.com">
