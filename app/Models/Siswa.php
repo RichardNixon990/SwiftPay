@@ -27,6 +27,6 @@ class Siswa extends Authenticatable
 
     public function pembayaran(): HasMany
     {
-        return $this->hasMany(Pembayaran::class, 'id_siswa');
+        return $this->hasMany(Pembayaran::class, 'nisn', 'nisn');
     }
 }

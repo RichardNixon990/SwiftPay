@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -24,7 +25,7 @@ class SiswaFactory extends Factory
             'alamat' => fake()->address(),
             'no_telp' => fake()->numerify('08###########'),
             'id_spp' => \App\Models\Spp::inRandomOrder()->first()->id ?? 1,
-            'password' => bcrypt('12345678'),
+            'password' => Hash::make('12345678'),
         ];
     }
 }

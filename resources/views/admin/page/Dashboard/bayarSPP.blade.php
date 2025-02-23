@@ -107,6 +107,7 @@
                     <thead class="table-light">
                         <tr>
                             <th>No</th>
+                            <th>SPP</th>
                             <th>Tahun Dibayar</th>
                             <th>Bulan Dibayar</th>
                             <th>Nominal</th>
@@ -119,6 +120,7 @@
                         @foreach ($DataRiwarat as $riwayat)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $riwayat->spp->tahun }}/{{ $riwayat->spp->semester }} : ({{ $riwayat->spp->nominal }})</td>
                                 <td>{{ $riwayat->tahun_dibayar }}</td>
                                 <td>{{ $riwayat->bulan_dibayar }}</td>
                                 <td>{{ $riwayat->jumlah_bayar }}</td>
