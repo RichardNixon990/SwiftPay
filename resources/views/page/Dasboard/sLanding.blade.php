@@ -24,7 +24,7 @@
                 <div class="card slsiswa-card card-table">
                     <div class="card-body">
                         <h5 class="slsiswa-card-title spp-title"> <i> Total SPP yang Harus Dibayar </i></h5>
-                        <p class="slsiswa-card-amount" style="margin-top: 3vh">Rp 1.500.000</p>
+                        <p class="slsiswa-card-amount" style="margin-top: 3vh">Rp {{ number_format(Auth::guard('siswa')->user()->spp->nominal, 0, ',', '.') }}</p>
                     </div>
                 </div>
             </div>

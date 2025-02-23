@@ -12,7 +12,7 @@
 
             <div class="container-fluid d-flex adminName">
                 <div class="heading-text">
-                    <h1>Halo Admin, {{ Auth::guard('petugas')->user()->nama_petugas }}</h1>
+                    <h1>Halo {{ Auth::guard('petugas')->user()->level == 'admin' ? "Admin" : "Petugas" }}, {{ Auth::guard('petugas')->user()->nama_petugas }}</h1>
                     <blockquote class="adminLanding">Disini kamu bisa mengatur dan melihat semua aktivitas! Gunakan Akses Privilege Ini Dengan Sebaiknya!</blockquote>
                 </div>
             </div>

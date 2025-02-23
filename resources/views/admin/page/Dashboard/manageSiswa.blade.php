@@ -31,7 +31,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $siswa->nama }}</td>
                         <td>{{ $siswa->kelas->nama_kelas }}</td>
-                        <td>Rp.1.000.000</td>
+                        <td>Rp {{ number_format($siswa->spp->nominal, 0, ',', '.') }}</td>
                         <td>
                             <button class="btn btn-info btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#adminManageSiswa-modalDetail-{{ $siswa->id }}">Detail</button>
