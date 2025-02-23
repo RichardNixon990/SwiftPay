@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         Kelas::factory()->count(10)->create();
         Petugas::factory()->count(20)->create();
-        //Spp::factory()->count(5)->create();
+        Spp::factory()->count(5)->create();
         Siswa::factory()->count(20)->create();
         //Pembayaran::factory()->count(10)->create(); //! Err teuing kunaon cape ah
     }
