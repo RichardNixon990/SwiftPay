@@ -14,6 +14,7 @@
     {{-- CSS --}}
     <link href="{{ asset ('assets/css/siswa/fLanding.css') }}" rel="stylesheet">
     <link href="{{ asset ('assets/css/siswa/sLanding.css') }}" rel="stylesheet">
+    <link href="{{ asset ('assets/css/siswa/profile.css') }}" rel="stylesheet">
     <link href="{{ asset ('assets/css/navbar.css') }}" rel="stylesheet">
 
     {{-- FONT --}}
