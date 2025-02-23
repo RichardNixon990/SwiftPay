@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('containerDashboard')
-
     <div class="slanding-bg">
 
     </div>
@@ -24,14 +23,15 @@
                 <div class="card slsiswa-card card-table">
                     <div class="card-body">
                         <h5 class="slsiswa-card-title spp-title"> <i> Total SPP yang Harus Dibayar </i></h5>
-                        <p class="slsiswa-card-amount" style="margin-top: 3vh">Rp {{ number_format(Auth::guard('siswa')->user()->spp->nominal, 0, ',', '.') }}</p>
+                        <p class="slsiswa-card-amount" style="margin-top: 3vh">Rp
+                            {{ number_format(Auth::guard('siswa')->user()->spp->nominal, 0, ',', '.') }}</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Status Pembayaran Terakhir -->
+            {{-- <!-- Status Pembayaran Terakhir -->
             <div class="col-6">
-                <div class="card slsiswa-card card-table"">
+                <div class="card slsiswa-card card-table">
                     <div class="card-body">
                         <h5 class="slsiswa-card-title"> <i>Status Pembayaran Terakhir</i></h5>
                         <p class="slsiswa-card-status" style="margin-top: 3vh">Lunas - Januari 2025</p>
@@ -47,14 +47,17 @@
                         <p class="slsiswa-card-tagihan" style="margin-top: 3vh">Februari 2025 - Rp 1.500.000 (Belum Dibayar)</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Tagihan yang Akan Datang -->
             <div class="col-6">
                 <div class="card slsiswa-card card-table">
                     <div class="card-body">
                         <h5 class="slsiswa-card-title"><i>Tagihan Sisa </i></h5>
-                        <p class="slsiswa-card-tagihan" style="margin-top: 3vh">Februari 2025 - Rp 500.000 ( Sisa )</p>
+                        <p class="slsiswa-card-amount" style="margin-top: 3vh">{{ $berlebih ? '+' : '' }}Rp
+                            {{ number_format($sisa, 0, ',', '.') }}</p>
+                        <i
+                            class="">{{ $berlebih ? 'Anda memiliki pembayaran berlebih, silahkan ajukan ke administator untuk mengembalikan dana' : '' }}</i>
                     </div>
                 </div>
             </div>
@@ -67,31 +70,21 @@
                         <table class="table table-striped slsiswa-table" style="margin-top: 3vh">
                             <thead>
                                 <tr>
-                                    <th>Bulan</th>
+                                    <th>No</th>
+                                    <th>SPP</th>
                                     <th>Tanggal Bayar</th>
                                     <th>Jumlah</th>
-                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Januari 2025</td>
-                                    <td>05-01-2025</td>
-                                    <td>Rp 1.500.000</td>
-                                    <td><span class="badge bg-success">Lunas</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Desember 2024</td>
-                                    <td>10-12-2024</td>
-                                    <td>Rp 1.500.000</td>
-                                    <td><span class="badge bg-success">Lunas</span></td>
-                                </tr>
-                                <tr>
-                                    <td>November 2024</td>
-                                    <td>-</td>
-                                    <td>Rp 1.500.000</td>
-                                    <td><span class="badge bg-danger">Belum Dibayar</span></td>
-                                </tr>
+                                @foreach ($historiSiswa as $histori)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $histori->spp->tahun }}/{{ $histori->spp->semester }} : ({{ $histori->spp->nominal }})</td>
+                                        <td>{{ $histori->tgl_bayar }}</td>
+                                        <td>Rp {{ number_format($histori->jumlah_bayar, 0, ',', '.') }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -100,5 +93,4 @@
 
         </div>
     </div>
-
 @endsection

@@ -26,9 +26,13 @@ class AdminController extends Controller
 
 
         $totalBelumDibayar = Siswa::leftJoin('spps', 'siswas.id_spp', '=', 'spps.id')
-            ->leftJoin('pembayarans', 'siswas.nisn', '=', 'pembayarans.nisn')
+            ->leftJoin('pembayarans', function ($join) {
+                $join->on('siswas.nisn', '=', 'pembayarans.nisn')
+                    ->on('siswas.id_spp', '=', 'pembayarans.id_spp'); 
+            })
             ->selectRaw('SUM(spps.nominal) - SUM(IFNULL(pembayarans.jumlah_bayar, 0)) as total_belum_dibayar')
             ->value('total_belum_dibayar');
+
 
         return view('admin.page.Dashboard.Landing', [
             'totalSiswa' => $totalSiswa,
