@@ -81,7 +81,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'AuthCheck'
     // Halaman Atmint
     Route::get('/dashboardAdmin', [AdminController::class, 'dashboard'])->name('dashboard');
     // Navigasi Fitur Atmint
-    Route::get('/BayarSPP', [AdminController::class, 'BayarSPP'])->name('BayarSPP');
+
     // FITUR ATMINT KELAS
     Route::get('/ManageKelas', [AdminController::class, 'ManageKelas'])->name('ManageKelas');
     Route::post('/tambahKelas', [AdminController::class, 'tambahKelas'])->name('tambahKelas');
@@ -102,5 +102,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'AuthCheck'
     Route::post('/tambahPetugas', [AdminController::class, 'tambahPetugas'])->name('tambahPetugas');
     Route::get('/hapusPetugas/{petugas}', [AdminController::class, 'hapusPetugas'])->name('hapusPetugas');
     Route::put('/updatePetugas', [AdminController::class, 'updatePetugas'])->name('updatePetugas');
+    // FITUR ATMINT SPP
+    Route::get('/BayarSPP', [AdminController::class, 'BayarSPP'])->name('BayarSPP');
+    Route::post('/StoreSPP', [AdminController::class, 'StoreSPP'])->name('StoreSPP');
 
 });

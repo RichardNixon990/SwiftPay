@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_petugas')->constrained('petugas');
-            $table->foreignId('nisn')->constrained('siswas')->onDelete('cascade');
+            $table->char('nisn', 10);
+            $table->foreign('nisn')->references('nisn')->on('siswas')->onDelete('cascade');
             $table->date('tgl_bayar');
             $table->string('bulan_dibayar');
             $table->string('tahun_dibayar');
             $table->foreignId('id_spp')->constrained('spps');
-            $table->enum('metode',['tunai','non-tunai']);
+            $table->enum('metode',['tunai','transfer','e-wallet']);
             $table->integer('jumlah_bayar');
             $table->timestamps();
         });

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Spp;
 use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\Petugas;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -16,10 +19,24 @@ class AdminController extends Controller
         $totalSiswa = Siswa::count();
         $totalKelas = Kelas::count();
         $totalPetugas = Petugas::count();
+        $totalUangMasuk = Pembayaran::whereMonth('created_at', date('m'))
+            ->whereYear('created_at', date('Y'))
+            ->sum('jumlah_bayar');
+        $HistoriTerbaru = Pembayaran::with('siswa')->latest()->take(3)->get();
+
+
+        $totalBelumDibayar = Siswa::leftJoin('spps', 'siswas.id_spp', '=', 'spps.id')
+            ->leftJoin('pembayarans', 'siswas.nisn', '=', 'pembayarans.nisn')
+            ->selectRaw('SUM(spps.nominal) - SUM(IFNULL(pembayarans.jumlah_bayar, 0)) as total_belum_dibayar')
+            ->value('total_belum_dibayar');
+
         return view('admin.page.Dashboard.Landing', [
             'totalSiswa' => $totalSiswa,
             'totalKelas' => $totalKelas,
             'totalPetugas' => $totalPetugas,
+            'totalUangMasuk' => $totalUangMasuk,
+            'HistoriTerbaru' => $HistoriTerbaru,
+            'totalBelumDibayar' => $totalBelumDibayar,
         ]);
     }
 
@@ -184,7 +201,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function tambahPetugas(Request $request) {
+    public function tambahPetugas(Request $request)
+    {
         $request->validate([
             'username' => 'required',
             'password' => 'required',
@@ -225,8 +243,43 @@ class AdminController extends Controller
     }
     //? AREA MANAGE PETUGAS END
 
-    public function BayarSPP()
+    public function BayarSPP(Request $request)
     {
-        return view('admin.page.Dashboard.bayarSPP');
+        $DataSiswa = Siswa::orderBy('nama', 'asc')->get();
+        if ($request->search != null) {
+            $DataSiswa = Siswa::where('nama', 'like', '%' . $request->search . '%')->get();
+        }
+        $DataKelas = Kelas::orderBy('nama_kelas', 'asc')->get();
+        $DataSpp = Spp::orderBy('created_at', 'desc')->get();
+        $DataRiwayat = Pembayaran::orderBy('created_at', 'desc')->paginate(5);
+        return view('admin.page.Dashboard.bayarSPP', [
+            'DataSiswa' => $DataSiswa,
+            'DataKelas' => $DataKelas,
+            'DataSpp' => $DataSpp,
+            'DataRiwarat' => $DataRiwayat
+        ]);
+    }
+
+    public function StoreSPP(Request $request)
+    {
+        $request->validate([
+            'siswa' => 'required',
+            'tahun' => 'required',
+            'bulan' => 'required',
+            'metode' => 'required',
+            'jumlah' => 'required',
+        ]);
+        $nisn = $request->siswa;
+        $pembayaran = new Pembayaran();
+        $pembayaran->id_petugas = Auth::guard('petugas')->user()->id;
+        $pembayaran->nisn = $nisn;
+        $pembayaran->tgl_bayar = Carbon::today();
+        $pembayaran->bulan_dibayar = $request->bulan;
+        $pembayaran->tahun_dibayar = $request->tahun;
+        $pembayaran->id_spp = Siswa::where('nisn', $nisn)->value('id_spp');
+        $pembayaran->metode = $request->metode;
+        $pembayaran->jumlah_bayar = $request->jumlah;
+        $pembayaran->save();
+        return back();
     }
 }

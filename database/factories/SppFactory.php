@@ -19,7 +19,7 @@ class SppFactory extends Factory
         return [
             'tahun' => fake()->numberBetween(2015, 2030),
             'semester' => fake()->randomElement(['genap', 'ganjil']),
-            'metode' => fake()->randomElement(['tunai', 'non-tunai']),
+            'nominal' => fake()->numberBetween(100000, 500000),
             'created_at' => now(),
             'updated_at' => now(),
         ];

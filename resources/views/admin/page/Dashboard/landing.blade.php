@@ -1,19 +1,19 @@
-
 @extends('admin.layouts.main')
 
 @section('containerAdmin')
+    <div class="adminLanding-BG">
 
-<div class="adminLanding-BG">
-
-</div>
+    </div>
 
     <div class="container container-adminLan mt-4">
         <div class="row g-4">
 
             <div class="container-fluid d-flex adminName">
                 <div class="heading-text">
-                    <h1>Halo {{ Auth::guard('petugas')->user()->level == 'admin' ? "Admin" : "Petugas" }}, {{ Auth::guard('petugas')->user()->nama_petugas }}</h1>
-                    <blockquote class="adminLanding">Disini kamu bisa mengatur dan melihat semua aktivitas! Gunakan Akses Privilege Ini Dengan Sebaiknya!</blockquote>
+                    <h1>Halo {{ Auth::guard('petugas')->user()->level == 'admin' ? 'Admin' : 'Petugas' }},
+                        {{ Auth::guard('petugas')->user()->nama_petugas }}</h1>
+                    <blockquote class="adminLanding">Disini kamu bisa mengatur dan melihat semua aktivitas! Gunakan Akses
+                        Privilege Ini Dengan Sebaiknya!</blockquote>
                 </div>
             </div>
             <!-- Ringkasan Data -->
@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <h5 class="adminlanding-card-title">Total SPP Belum Dibayar</h5>
                         <div class="card-title-underline"></div>
-                        <p class="adminlanding-card-amount">Rp 10.000.000</p>
+                        <p class="adminlanding-card-amount">Rp {{ number_format($totalBelumDibayar, 0, ',', '.') }}</p>
                     </div>
                 </div>
             </div>
@@ -60,11 +60,13 @@
                     <div class="card-body">
                         <h5 class="adminlanding-card-title">Statistik Pembayaran Bulan Ini</h5>
                         <div class="card-title-underline"></div>
-                        <p class="adminlanding-card-info">Rp 30.000.000 sudah masuk</p>
-                        <div class="progress">
+
+                        <p class="adminlanding-card-info">Rp {{ number_format($totalUangMasuk, 0, ',', '.') }} sudah masuk
+                        </p>
+                        {{-- <div class="progress">
                             <div class="progress-bar bg-success" style="width: 75%;">75% Lunas</div>
                             <div class="progress-bar bg-danger" style="width: 25%;">25% Belum</div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -81,28 +83,16 @@
                                     <th>Nama Siswa</th>
                                     <th>Tanggal Bayar</th>
                                     <th>Jumlah</th>
-                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Rizky Putra</td>
-                                    <td>10-02-2025</td>
-                                    <td>Rp 1.500.000</td>
-                                    <td><span class="badge bg-success">Lunas</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Siti Aminah</td>
-                                    <td>09-02-2025</td>
-                                    <td>Rp 1.500.000</td>
-                                    <td><span class="badge bg-success">Lunas</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Ahmad Fauzan</td>
-                                    <td>-</td>
-                                    <td>Rp 1.500.000</td>
-                                    <td><span class="badge bg-danger">Belum Bayar</span></td>
-                                </tr>
+                                @foreach ($HistoriTerbaru as $histori)
+                                    <tr>
+                                        <td>{{ $histori->siswa->nama }}</td>
+                                        <td>{{ $histori->tgl_bayar }}</td>
+                                        <td>{{ $histori->jumlah_bayar }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -123,6 +113,4 @@
 
         </div>
     </div>
-
 @endsection
-
