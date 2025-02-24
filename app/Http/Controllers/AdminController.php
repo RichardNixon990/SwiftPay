@@ -9,9 +9,10 @@ use App\Models\Siswa;
 use App\Models\Petugas;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
 {
@@ -300,5 +301,33 @@ class AdminController extends Controller
             'DataPetugas' => $DataPetugas,
         ]);
         return $pdf->download('invoice_' . $nisn . '_'.$DataSiswa->nama.'_' . $riwayat->created_at . '.pdf');
+    }
+
+    public function profileSiswa(Siswa $siswa)
+    {
+        $admin = true;
+        $nisn = $siswa->nisn;
+
+        $data = DB::table('pembayarans as p')
+            ->leftJoin('spps as s', 'p.id_spp', '=', 's.id')
+            ->select(
+                'p.nisn',
+                'p.tahun_dibayar',
+                'p.id_spp',
+                's.semester',
+                DB::raw('SUM(p.jumlah_bayar) as total_bayar'),
+                's.nominal as nominal_spp',
+                DB::raw('(s.nominal - SUM(p.jumlah_bayar)) as sisa_pembayaran')
+            )
+            ->where('p.nisn', $nisn)
+            ->groupBy('p.nisn', 'p.tahun_dibayar', 'p.id_spp', 's.nominal')
+            ->get();
+
+        //return $data;
+        return view('page.Feature.profile', [
+            'data' => $data,
+            'admin' => $admin,
+            'siswa' => $siswa
+        ]);
     }
 }

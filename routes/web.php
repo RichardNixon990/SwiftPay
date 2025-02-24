@@ -66,6 +66,7 @@ Route::get('/sLanding/Admin/manageSiswa', function () {
 Route::group(['prefix' => 'siswa', 'as' => 'siswa.', 'middleware' => 'AuthCheck'], function () {
     // Dashboard siswa
     Route::get('/dashboardSiswa', [SiswaController::class, 'dashboard'])->name('dashboard');
+    Route::get('/profileSiswa', [SiswaController::class, 'profileSiswa'])->name('profileSiswa');
     Route::get('/logoutSiswa', [AuthController::class, 'logoutSiswa'])->name('logoutSiswa');
 });
 
@@ -81,7 +82,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'AuthCheck'
     // Halaman Atmint
     Route::get('/dashboardAdmin', [AdminController::class, 'dashboard'])->name('dashboard');
     // Navigasi Fitur Atmint
-
+    Route::get('/profileSiswa/{siswa}', [AdminController::class, 'profileSiswa'])->name('profileSiswa');
     // FITUR ATMINT KELAS
     Route::get('/ManageKelas', [AdminController::class, 'ManageKelas'])->name('ManageKelas');
     Route::post('/tambahKelas', [AdminController::class, 'tambahKelas'])->name('tambahKelas');
