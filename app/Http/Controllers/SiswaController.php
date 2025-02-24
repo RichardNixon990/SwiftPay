@@ -12,11 +12,11 @@ class SiswaController extends Controller
         $TotalPembayaran = Auth::guard('siswa')->user()->pembayaran->where('id_spp', Auth::guard('siswa')->user()->id_spp)->sum('jumlah_bayar');
         $berlebih = false;
         $sisa = $SppSiswa - $TotalPembayaran;
-        if ($sisa < 0) {
+        if ($sisa <= 0) {
             $sisa = abs($sisa);
             $berlebih = true;
         }
-        $historiSiswa = Auth::guard('siswa')->user()->pembayaran;
+        $historiSiswa = Auth::guard('siswa')->user()->pembayaran()->paginate(5);
         return view('page.Dasboard.sLanding', [
             'sisa' => $sisa,
             'berlebih' => $berlebih,

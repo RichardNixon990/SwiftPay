@@ -11,6 +11,7 @@ use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
 {
@@ -28,7 +29,7 @@ class AdminController extends Controller
         $totalBelumDibayar = Siswa::leftJoin('spps', 'siswas.id_spp', '=', 'spps.id')
             ->leftJoin('pembayarans', function ($join) {
                 $join->on('siswas.nisn', '=', 'pembayarans.nisn')
-                    ->on('siswas.id_spp', '=', 'pembayarans.id_spp'); 
+                    ->on('siswas.id_spp', '=', 'pembayarans.id_spp');
             })
             ->selectRaw('SUM(spps.nominal) - SUM(IFNULL(pembayarans.jumlah_bayar, 0)) as total_belum_dibayar')
             ->value('total_belum_dibayar');
@@ -285,5 +286,19 @@ class AdminController extends Controller
         $pembayaran->jumlah_bayar = $request->jumlah;
         $pembayaran->save();
         return back();
+    }
+
+    public function GenerateLaporan(Pembayaran $riwayat)
+    {
+        $nisn = $riwayat->nisn;
+        $DataPetugas = Petugas::find($riwayat->id_petugas);
+        $DataSiswa = Siswa::where('nisn', $nisn)->first();
+        $pdf = Pdf::loadView('page.pdf.pdf', [
+            'nisn' => $nisn,
+            'riwayat' => $riwayat,
+            'DataSiswa' => $DataSiswa,
+            'DataPetugas' => $DataPetugas,
+        ]);
+        return $pdf->download('invoice_' . $nisn . '_'.$DataSiswa->nama.'_' . $riwayat->created_at . '.pdf');
     }
 }
