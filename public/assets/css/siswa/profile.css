@@ -96,7 +96,7 @@ body {
 .profile-info strong {
     margin: 5px 0;
     font-size: 2rem;
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", sans-serif !important;
 }
 
 .payment-history {
