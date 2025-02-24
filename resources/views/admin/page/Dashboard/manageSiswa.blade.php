@@ -35,7 +35,7 @@
                         <td>
                             <button class="btn btn-info btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#adminManageSiswa-modalDetail-{{ $siswa->id }}">Detail</button>
-                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#adminManageSiswa-modalFormEdit"
                                 onclick="editSiswa({{ $siswa->id }}, '{{ $siswa->nama }}', '{{ $siswa->nisn }}', '{{ $siswa->nis }}', '{{ base64_encode($siswa->alamat) }}', {{ $siswa->no_telp }}, {{ $siswa->id_kelas }}, {{ $siswa->id_spp }})
                                 ">Edit</button>
@@ -67,7 +67,9 @@
                         <p><strong>Kelas :</strong> {{ $siswa->kelas->nama_kelas }}</p>
                         <p><strong>Alamat :</strong> {{ $siswa->alamat }}</p>
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">View Profile</button>
+                        <a href="{{ route('admin.profileSiswa', $siswa->id) }}">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">View Profile</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -171,8 +173,8 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label name">Password :</label>
-                            <input type="text" class="form-control" placeholder="Update Password, Jika tidak kosongkan"
-                                id="edit-password" name="password">
+                            <input type="text" class="form-control"
+                                placeholder="Update Password, Jika tidak kosongkan" id="edit-password" name="password">
                         </div>
                         <div class="mb-3">
                             <label class="form-label name">No Telp :</label>

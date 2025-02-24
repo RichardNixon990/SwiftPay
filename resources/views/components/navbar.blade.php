@@ -10,11 +10,13 @@
 
             <div class="ms-auto d-flex align-items-center mx-3 fs-5 mb-0 LR">
                 @if (Auth::guard('siswa')->check())
+                    <a href="{{ route('siswa.profileSiswa') }}" class="nav-link">Profile</a>
+                    <div class="garis mx-3">|</div>
                     <a href="{{ route('siswa.logoutSiswa') }}" class="nav-link">Logout</a>
                 @else
                     <a href="{{ route('login') }}" class="nav-link">Login</a>
                 @endif
-                <div class="garis mx-3">|</div>
+                {{-- <div class="garis mx-3">|</div> --}}
             </div>
         </div>
     </nav>
