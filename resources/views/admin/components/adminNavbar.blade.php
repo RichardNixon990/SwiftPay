@@ -31,7 +31,7 @@
             <li class="nav-item"><a href="{{ route('admin.BayarSPP') }}" class="nav-link">Bayar SPP</a></li> <br>
             <div class="card-title-underline"></div>
             <li class="nav-item"><a href="" class="nav-link">Profile</a></li>
-            <li class="nav-item"><a href="" class="nav-link">Dashboard</a></li>
+            <li class="nav-item"><a href="{{route ('admin.dashboard')}}" class="nav-link">Dashboard</a></li>
             <li class="nav-item"><a href="{{ route('admin.logoutAdmin') }}" class="nav-link text-danger">Logout</a></li>
         </ul>
     </div>
