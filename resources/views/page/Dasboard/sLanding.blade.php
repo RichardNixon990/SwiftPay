@@ -87,6 +87,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $historiSiswa->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
             </div>

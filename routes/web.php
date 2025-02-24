@@ -105,5 +105,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'AuthCheck'
     // FITUR ATMINT SPP
     Route::get('/BayarSPP', [AdminController::class, 'BayarSPP'])->name('BayarSPP');
     Route::post('/StoreSPP', [AdminController::class, 'StoreSPP'])->name('StoreSPP');
+    Route::post('/GenerateLaporan/{riwayat}', [AdminController::class, 'GenerateLaporan'])->name('GenerateLaporan');
 
 });

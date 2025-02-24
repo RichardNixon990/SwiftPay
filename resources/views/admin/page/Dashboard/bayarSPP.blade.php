@@ -75,7 +75,7 @@
 
             <!-- Form Pilih SPP -->
             <div class="mb-3">
-                <label for="metode" class="input-label form-label px-1">Pilih SPP</label>
+                <label for="metode" class="input-label form-label px-1">Metode Pembayaran</label>
                 <select id="metode" class="form-select input" name="metode">
                     <option selected disabled>Metode Pembayaran</option>
                     <option value="tunai">Tunai</option>
@@ -108,11 +108,13 @@
                         <tr>
                             <th>No</th>
                             <th>SPP</th>
+                            <th>NISN</th>
                             <th>Tahun Dibayar</th>
                             <th>Bulan Dibayar</th>
                             <th>Nominal</th>
                             <th>Metode</th>
                             <th>Tanggal Pembayaran</th>
+                            <th>Aksi</th>
 
                         </tr>
                     </thead>
@@ -121,11 +123,18 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $riwayat->spp->tahun }}/{{ $riwayat->spp->semester }} : ({{ $riwayat->spp->nominal }})</td>
+                                <td>{{ $riwayat->nisn }}</td>
                                 <td>{{ $riwayat->tahun_dibayar }}</td>
                                 <td>{{ $riwayat->bulan_dibayar }}</td>
-                                <td>{{ $riwayat->jumlah_bayar }}</td>
+                                <td>Rp {{ number_format($riwayat->jumlah_bayar, 0, ',', '.') }}</td>
                                 <td>{{ $riwayat->metode }}</td>
                                 <td>{{ $riwayat->tgl_bayar }}</td>
+                                <td>
+                                    <form action="{{ route('admin.GenerateLaporan', $riwayat->id) }}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-primary">Generate Laporan</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
